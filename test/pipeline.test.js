@@ -23,7 +23,7 @@ test('estimated workload uses ceil(chars / 4) and illustrative rate', () => {
   const tokenEstimate = Math.ceil(text.length / 4);
   const dollarCost = (tokenEstimate / 1_000_000) * 0.02;
   assert.equal(tokenEstimate, 5);
-  assert.equal(dollarCost, 0.0000001);
+  assert.ok(Math.abs(dollarCost - 0.0000001) < Number.EPSILON);
 });
 
 test('checkpoint advances and supports restart after the saved id', () => {
